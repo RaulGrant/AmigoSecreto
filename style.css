@@ -7,7 +7,603 @@
     --color-text: #444444;
     --color-white: #FFFFFF;
 }
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(-20px);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
 
+.nombre-item {
+    padding: 10px 15px;
+    margin: 5px 0;
+    background: linear-gradient(45deg, #f0f8ff, #e6f3ff);
+    border: 2px solid #4B69FD;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    animation: aparecer 0.6s ease-out;
+    position: relative;
+}
+
+.nombre-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 4px 15px rgba(75, 105, 253, 0.3);
+}
+
+/* Estilos para amigos ya sorteados */
+.nombre-item-sorteado {
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef) !important;
+    border: 2px solid #adb5bd !important;
+    opacity: 0.7;
+    color: #6c757d !important;
+}
+
+.nombre-item-sorteado:hover {
+    transform: translateX(5px) !important;
+    box-shadow: 0 2px 8px rgba(173, 181, 189, 0.3) !important;
+}
+
+.nombre-texto {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.etiqueta-sorteado {
+    background-color: #28a745;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(40, 167, 69, 0.3);
+}
+
+/* Animación de pulso para mensajes */
+@keyframes pulso {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.mensaje-temporal {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    animation: pulso 0.5s ease-in-out;
+    z-index: 1000;
+}
+
+.mensaje-error {
+    background-color: #ff4757;
+}
+
+.mensaje-exito {
+    background-color: #2ed573;
+}
+/* Estilos del Modal Principal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 0;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.5s ease-out;
+    text-align: center;
+}
+
+.modal-header {
+    background: linear-gradient(45deg, #4B69FD, #fe652b);
+    color: white;
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+}
+
+.modal-body {
+    padding: 30px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    position: relative;
+}
+
+.modal-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+
+.btn-modal {
+    background-color: #fe652b;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-modal:hover {
+    background-color: #e55720;
+    transform: translateY(-2px);
+}
+
+/* Estilos específicos del Modal de Eliminación */
+.modal-eliminar {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content-eliminar {
+    max-width: 450px;
+    margin: 15% auto;
+    border: 2px solid #ff4757;
+    box-shadow: 0 15px 35px rgba(255, 71, 87, 0.2);
+}
+
+.modal-header-eliminar {
+    background: linear-gradient(135deg, #ff4757, #ff3838);
+    padding: 15px 20px;
+}
+
+.modal-header-eliminar h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.modal-body-eliminar {
+    padding: 25px 20px;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+}
+
+.modal-body-eliminar p {
+    margin: 0 0 15px 0;
+    line-height: 1.5;
+}
+
+.texto-advertencia {
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+}
+
+.modal-footer-eliminar {
+    padding: 15px 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    border-top: 1px solid #eee;
+}
+
+.btn-cancelar {
+    background-color: #6c757d;
+    color: white;
+    padding: 12px 25px;
+    font-size: 14px;
+    border-radius: 20px;
+    min-width: 100px;
+}
+
+.btn-cancelar:hover {
+    background-color: #545b62;
+    transform: translateY(-1px);
+}
+
+.btn-confirmar {
+    background-color: #ff4757;
+    color: white;
+    padding: 12px 25px;
+    font-size: 14px;
+    border-radius: 20px;
+    min-width: 100px;
+    box-shadow: 0 3px 8px rgba(255, 71, 87, 0.3);
+}
+
+.btn-confirmar:hover {
+    background-color: #ff3838;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 12px rgba(255, 71, 87, 0.4);
+}
+
+#nombreEliminar {
+    color: #ff4757;
+    font-weight: bold;
+}
+
+/* Estilos para el modal de resultado mejorado */
+.modal-footer-multiple {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-sortear-otro {
+    background: linear-gradient(135deg, #2ed573, #26d063);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(46, 213, 115, 0.3);
+}
+
+.btn-sortear-otro:hover {
+    background: linear-gradient(135deg, #26d063, #1dd85a);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(46, 213, 115, 0.4);
+}
+
+.btn-reiniciar {
+    background: linear-gradient(135deg, #4B69FD, #3c56f0);
+    color: white;
+    font-weight: bold;
+}
+
+.btn-reiniciar:hover {
+    background: linear-gradient(135deg, #3c56f0, #2d47ed);
+}
+
+.contador-amigos {
+    margin-top: 20px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+}
+
+/* Nuevo diseño del contador de estadísticas */
+.contador-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 20px;
+    border: 2px solid #dee2e6;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    justify-content: center;
+}
+
+.stat-icon {
+    font-size: 24px;
+    line-height: 1;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 2px;
+}
+
+.stat-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+}
+
+.stat-sorteados .stat-number {
+    color: #28a745;
+}
+
+.stat-sorteados .stat-label {
+    color: #155724;
+}
+
+.stat-restantes .stat-number {
+    color: #007bff;
+}
+
+.stat-restantes .stat-label {
+    color: #004085;
+}
+
+.stat-divider {
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(180deg, transparent, #dee2e6, transparent);
+    border-radius: 1px;
+}
+
+/* Animación sutil para los números */
+.stat-number {
+    animation: countPulse 0.6s ease-out;
+}
+
+@keyframes countPulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Estilos para el modal de sin amigos */
+.modal-sin-amigos {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.modal-content-sin-amigos {
+    max-width: 550px;
+    margin: 8% auto;
+    border: 3px solid #ffa502;
+    box-shadow: 0 20px 40px rgba(255, 165, 2, 0.2);
+}
+
+.modal-header-sin-amigos {
+    background: linear-gradient(135deg, #ffa502, #ff9500);
+    padding: 20px;
+}
+
+.modal-header-sin-amigos h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.modal-body-sin-amigos {
+    padding: 30px 25px;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.modal-body-sin-amigos p {
+    margin: 0 0 15px 0;
+}
+
+.texto-opciones {
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+    margin: 25px 0 20px 0 !important;
+}
+
+.lista-sorteados {
+    margin-top: 25px;
+    padding: 20px;
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+    border-radius: 15px;
+    border: 2px solid #dee2e6;
+}
+
+.lista-sorteados h4 {
+    margin: 0 0 15px 0;
+    color: #495057;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.lista-sorteados ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.lista-sorteados li {
+    padding: 8px 12px;
+    margin: 5px 0;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #dee2e6;
+    font-size: 14px;
+    color: #495057;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.modal-footer-sin-amigos {
+    padding: 20px 25px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    border-top: 1px solid #eee;
+    flex-wrap: wrap;
+}
+
+.btn-agregar {
+    background: linear-gradient(135deg, #2ed573, #26d063);
+    color: white;
+    padding: 15px 25px;
+    font-size: 14px;
+    border-radius: 25px;
+    min-width: 150px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(46, 213, 115, 0.3);
+}
+
+.btn-agregar:hover {
+    background: linear-gradient(135deg, #26d063, #1dd85a);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(46, 213, 115, 0.4);
+}
+
+.btn-reiniciar-completo {
+    background: linear-gradient(135deg, #ff4757, #ff3838);
+    color: white;
+    padding: 15px 25px;
+    font-size: 14px;
+    border-radius: 25px;
+    min-width: 150px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
+}
+
+.btn-reiniciar-completo:hover {
+    background: linear-gradient(135deg, #ff3838, #ff2626);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 71, 87, 0.4);
+}
+
+/* Animación especial para el modal de sin amigos */
+@keyframes celebracion {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.05) rotate(1deg); }
+    75% { transform: scale(1.05) rotate(-1deg); }
+}
+
+.modal-content-sin-amigos {
+    animation: slideDown 0.5s ease-out, celebracion 2s ease-in-out 0.5s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes confetti {
+    0% { transform: translateY(-100vh) rotateZ(0deg); }
+    100% { transform: translateY(100vh) rotateZ(720deg); }
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #4B69FD;
+    animation: confetti 3s linear infinite;
+}
+.nombre-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.btn-eliminar {
+    background: linear-gradient(135deg, #ff4757, #ff3838);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+    margin-left: 10px;
+    box-shadow: 0 2px 4px rgba(255, 71, 87, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-eliminar:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.3s ease;
+}
+
+.btn-eliminar:hover {
+    background: linear-gradient(135deg, #ff3838, #ff2626);
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: 0 4px 8px rgba(255, 71, 87, 0.4);
+}
+
+.btn-eliminar:hover:before {
+    left: 100%;
+}
+
+.btn-eliminar:active {
+    transform: scale(0.95) rotate(0deg);
+    box-shadow: 0 1px 2px rgba(255, 71, 87, 0.5);
+}
+
+/* Botón de eliminar deshabilitado para amigos sorteados */
+.btn-eliminar:disabled {
+    background: linear-gradient(135deg, #adb5bd, #95a5a6);
+    color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: none;
+}
+
+.btn-eliminar:disabled:hover {
+    background: linear-gradient(135deg, #adb5bd, #95a5a6);
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-eliminar:disabled:before {
+    display: none;
+}
 /* Estilos generales */
 * {
     margin: 0;
@@ -68,6 +664,50 @@ body {
     color: var(--color-primary);
     margin: 10px 0;
     text-align: center;
+}
+
+/* Estado del juego - información dinámica */
+.estado-juego {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    padding: 8px 20px;
+    margin: 0 auto 20px auto;
+    border-radius: 25px;
+    max-width: 500px;
+    min-height: 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.estado-juego.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.estado-juego.estado-inicial {
+    background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+    border: 2px solid #2196f3;
+    color: #1976d2;
+}
+
+.estado-juego.estado-progreso {
+    background: linear-gradient(45deg, #fff3e0, #ffe0b2);
+    border: 2px solid #ff9800;
+    color: #f57c00;
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.2);
+}
+
+.estado-juego.estado-completo {
+    background: linear-gradient(45deg, #e8f5e8, #c8e6c9);
+    border: 2px solid #4caf50;
+    color: #388e3c;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
 }
 
 /* Contenedores de entrada y botón */

@@ -19,6 +19,7 @@
         
         <section class="input-section">
             <h2 class="section-title">Digite el nombre de sus amigos</h2>
+            <div id="estadoJuego" class="estado-juego"></div>
             <div class="input-wrapper">
                 <input type="text" id="amigo" class="input-name" placeholder="Escribe un nombre">
                 <button class="button-add" onclick="agregarAmigo()">Añadir</button>
@@ -35,7 +36,63 @@
             </div>
         </section>
     </main>
+<!-- Modal de resultado del sorteo -->
+<div id="modalResultado" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>🎉 ¡Resultado del Sorteo! 🎉</h2>
+        </div>
+        <div class="modal-body">
+            <p id="textoResultado"></p>
+            <div id="contadorAmigos" class="contador-amigos"></div>
+            <div class="confetti"></div>
+        </div>
+        <div class="modal-footer modal-footer-multiple">
+            <button id="btnSortearOtro" class="btn-modal btn-sortear-otro">🎲 Sortear Otro Amigo</button>
+            <button id="btnCerrarModal" class="btn-modal btn-reiniciar">🔄 Jugar de Nuevo</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de sin amigos disponibles -->
+<div id="modalSinAmigos" class="modal modal-sin-amigos">
+    <div class="modal-content modal-content-sin-amigos">
+        <div class="modal-header modal-header-sin-amigos">
+            <h3>🎯 ¡Ya no quedan más amigos!</h3>
+        </div>
+        <div class="modal-body modal-body-sin-amigos">
+            <p>🎊 <strong>¡Felicidades!</strong> Has sorteado a todos tus amigos.</p>
+            <p class="texto-opciones">¿Qué deseas hacer ahora?</p>
+            <div class="lista-sorteados">
+                <h4>Amigos ya sorteados:</h4>
+                <ul id="listaSorteados"></ul>
+            </div>
+        </div>
+        <div class="modal-footer modal-footer-sin-amigos">
+            <button id="btnAgregarMas" class="btn-modal btn-agregar">➕ Agregar Más Amigos</button>
+            <button id="btnReiniciarJuego" class="btn-modal btn-reiniciar-completo">🔄 Reiniciar Juego</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de confirmación de eliminación -->
+<div id="modalEliminar" class="modal modal-eliminar">
+    <div class="modal-content modal-content-eliminar">
+        <div class="modal-header modal-header-eliminar">
+            <h3>⚠️ Confirmar Eliminación</h3>
+        </div>
+        <div class="modal-body modal-body-eliminar">
+            <p id="textoEliminar">¿Estás seguro de que deseas eliminar a <strong id="nombreEliminar"></strong> de la lista?</p>
+            <p class="texto-advertencia">Esta acción no se puede deshacer.</p>
+        </div>
+        <div class="modal-footer modal-footer-eliminar">
+            <button id="btnCancelarEliminar" class="btn-modal btn-cancelar">Cancelar</button>
+            <button id="btnConfirmarEliminar" class="btn-modal btn-confirmar">Eliminar</button>
+        </div>
+    </div>
+</div>
 
     <script src="app.js" defer></script>
+
 </body>
 </html>
